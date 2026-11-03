@@ -1,11 +1,11 @@
-# Mohamed Awad Academic Website
+# Mohamed S. Gaballah Academic Website
 
 Responsive, minimal academic website starter.
 
 ## Before publishing
-- Replace `YOUR_CMU_EMAIL` in `index.html` with your university email.
+- Replace `Awad1m@cmich.edu` in `index.html` with your university email.
 - Add a professional headshot as `assets/profile.jpg` (the current block is a placeholder).
-- Add your CV as `assets/Mohamed_Awad_CV.pdf`.
+- Add your CV as `assets/Mohamed_S._Gaballah_CV.pdf`.
 - Review course titles, roles, awards, and all content for accuracy.
 - Add selected publication citations, DOI links, conference activities, and photos as desired.
 
