@@ -1,21 +1,26 @@
-# Mohamed Awad Academic Website
+# Mohamed S. Gaballah Awad — Academic Website
 
-Responsive, minimal academic website starter.
+A responsive, minimal academic website for GitHub Pages.
 
-## Before publishing
-- Replace `YOUR_CMU_EMAIL` in `index.html` with your university email.
-- Add a professional headshot as `assets/profile.jpg` (the current block is a placeholder).
-- Add your CV as `assets/Mohamed_Awad_CV.pdf`.
-- Review course titles, roles, awards, and all content for accuracy.
-- Add selected publication citations, DOI links, conference activities, and photos as desired.
+## Files
+- `index.html` — website content and structure
+- `styles.css` — visual design and responsive layout
+- `script.js` — navigation and footer behavior
+- `assets/Mohamed_Awad_CV.pdf` — downloadable 2026 CV
+- `assets/profile.jpg` — optional professional headshot (not yet supplied)
 
-## Preview
-Open `index.html` in a browser, or use VS Code Live Server.
+## Preview locally
+Open `index.html` in a web browser.
 
-## Publish free with GitHub Pages
-1. Create a repository named `YOUR-USERNAME.github.io`.
-2. Upload the contents of this folder to the repository root.
-3. In Settings → Pages, select deployment from the `main` branch and `/ (root)`.
-4. The site will be available at `https://YOUR-USERNAME.github.io/`.
+## Update the live website
+1. Replace or edit the files in the local repository folder.
+2. Open GitHub Desktop and review the detected changes.
+3. Enter a commit summary, then click **Commit to main**.
+4. Click **Push origin**.
+5. GitHub Pages will publish the changes automatically.
 
-No backend or paid hosting is required.
+## Notes
+- The selected publications are a curated subset of the uploaded 2026 CV; consult Google Scholar for the complete/current record.
+- Public contact details (CMU email, office phone, mobile phone, and office address) are included at the user's request.
+- Add a professional headshot as `assets/profile.jpg` when ready; the homepage currently shows a placeholder.
+- Check publication details and status before future updates, particularly manuscripts listed as pending or under review in the CV.
