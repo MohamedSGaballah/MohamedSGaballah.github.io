@@ -9,6 +9,13 @@ A responsive, minimal academic website for GitHub Pages.
 - `assets/Mohamed_Awad_CV.pdf` — downloadable 2026 CV
 - `assets/profile.jpg` — optional professional headshot (not yet supplied)
 
+## Before publishing
+- Replace `Awad1m@cmich.edu` in `index.html` with your university email.
+- Add a professional headshot as `assets/profile.jpg` (the current block is a placeholder).
+- Verify that the CV at `assets/Mohamed_Awad_CV.pdf` is current.
+- Review course titles, roles, awards, and all content for accuracy.
+- Add selected publication citations, DOI links, conference activities, and photos as desired.
+
 ## Preview locally
 Open `index.html` in a web browser.
 
