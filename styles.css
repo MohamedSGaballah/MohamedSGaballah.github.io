@@ -86,3 +86,17 @@
   }
 }
 
+/* Pilot-scale research installation photograph */
+.pilot-photo {
+  max-width: 520px;
+  margin: 28px 0 45px;
+}
+
+.pilot-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 5px;
+  display: block;
+}
