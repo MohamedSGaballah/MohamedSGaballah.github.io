@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-  <link href="styles.css" rel="stylesheet"/>
+  <link href="styles.css?v=5" rel="stylesheet"/>
 </head>
 <body>
   <header>
@@ -45,19 +45,28 @@
         <div class="twocol">
           <article>
             <h3>I view the classroom as a place to build the habits of engineering thinking: curiosity, evidence-based decisions, teamwork, and reflection.</h3>
-            <p>My teaching integrates collaborative problem-solving, real-world case studies, field visits, rigorous laboratory experimentation, and practitioner perspectives to connect fundamental engineering science with applied environmental systems.</p>
+            <p>My teaching integrates collaborative problem-solving, case studies, field visits, laboratory experiences, and practitioner perspectives to connect fundamental concepts with real engineering systems.</p>
             
-            <h3 class="subhead">Capstone &amp; Student Supervision</h3>
+            <!-- Student Professional Development Showcase (img_3: WEFTEC) -->
+            <div class="industry-showcase-card" style="margin-top: 24px;">
+              <img alt="Dr. Mohamed Gaballah mentoring CMU engineering students at WEFTEC" src="assets/images/weftec-mentoring.jpg" style="height: 240px;"/>
+              <div class="caption">
+                <strong>Student Mentorship &amp; Conference Engagement (WEFTEC)</strong>
+                <span>Supporting students beyond the classroom with national water conference exposure, professional networking, and applied engineering seminars.</span>
+              </div>
+            </div>
+
+            <h3 class="subhead">Student Supervision &amp; Capstones</h3>
             <div class="activity" style="margin-top: 15px;">
               <div>
                 <small>HONORS CAPSTONE RESEARCH</small>
                 <h3>Connor Bendele — PFAS Removal</h3>
-                <p>Supervised honors capstone student researching innovative methods for toxic PFAS removal from aqueous environments.</p>
+                <p>Supervised undergraduate honors student Connor Bendele's capstone project investigating innovative adsorption methods for toxic PFAS removal from aqueous environments.</p>
               </div>
               <div>
-                <small>SENIOR DESIGN SPONSORSHIP</small>
+                <small>MUNICIPAL &amp; INDUSTRIAL TEAMS</small>
                 <h3>City of Midland &amp; Highland Plastics</h3>
-                <p>Guided student teams on municipal wastewater grit removal system design and industrial thermal insulation/waste heat recovery.</p>
+                <p>Guided student teams in the hydraulic and mechanical design of a municipal grit removal facility and industrial waste heat recovery systems.</p>
               </div>
             </div>
           </article>
@@ -83,6 +92,10 @@
     <div class="wrap">
       <span>© <span id="year"></span> Mohamed S. Gaballah Awad</span>
       <span>School of Engineering &amp; Technology · Central Michigan University</span>
+      <span class="visitor-stats">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; opacity: 0.8;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        Views: <strong id="stats-views">...</strong>
+      </span>
       <a href="index.html">About ↑</a>
     </div>
   </footer>
