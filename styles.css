@@ -412,9 +412,12 @@ label {
 #research .research-card > img {
   display: block;
   width: 100%;
-  height: 210px;
-  object-fit: cover;
+  height: 240px;            /* Gives enough vertical area */
+  object-fit: contain;      /* Shows the WHOLE graphic — NO cutting or cropping */
   object-position: center;
+  background-color: #f7f9fa;/* Clean light backdrop for edges */
+  padding: 12px;            /* Keeps text away from card border */
+  border-bottom: 1px solid #e5ecea;
 }
 
 #research .research-card-content {
@@ -570,9 +573,18 @@ footer a {
 }
 
 @media (max-width: 560px) {
-  .wrap {
-    width: calc(100% - 34px);
+  #research .research-cards { 
+    grid-template-columns: 1fr; 
   }
+  #research .research-card > img { 
+    height: 220px;
+    object-fit: contain; 
+    padding: 10px;
+  }
+  #research.section > .wrap { 
+    width: calc(100% - 34px); 
+  }
+}
 
   .stripgrid {
     grid-template-columns: 1fr;
