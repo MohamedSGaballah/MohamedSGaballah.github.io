@@ -1,18 +1,27 @@
 /* ==========================================================================
    Mohamed S. Gaballah Awad — Academic & Engineering Portfolio Stylesheet
+   Enhanced Atmospheric & Engineering Texture Edition
    ========================================================================== */
 
 :root {
-  --ink: #24313a;
-  --line: #dce3e5;
+  --ink: #1f2d37;
+  --ink-light: #41535f;
+  --line: #dbe4e2;
+  --line-light: #e8efed;
   --brand: #193447;
-  --brand-light: #244b66;
+  --brand-dark: #10222f;
+  --brand-light: #284c64;
   --accent: #b56b4b;
-  --accent-soft: rgba(181, 107, 75, 0.1);
-  --muted: #69757b;
-  --bg-shaded: #f4f7f6;
+  --accent-hover: #9c5537;
+  --accent-soft: rgba(181, 107, 75, 0.08);
+  --muted: #64737b;
+  --bg-base: #f9fbfa;
+  --bg-shaded: #f1f5f4;
   --card-bg: #ffffff;
-  --card-border: #dce4e2;
+  --card-border: rgba(206, 219, 216, 0.85);
+  --shadow-sm: 0 2px 8px rgba(25, 52, 71, 0.04);
+  --shadow-md: 0 8px 24px rgba(25, 52, 71, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 16px 36px rgba(25, 52, 71, 0.09), 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
 * {
@@ -24,11 +33,18 @@ html {
   scroll-padding-top: 85px;
 }
 
+/* Global Engineering Blueprint Canvas */
 body {
   margin: 0;
   color: var(--ink);
-  font: 15px/1.7 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #ffffff;
+  font: 15px/1.75 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-base);
+  background-image: 
+    radial-gradient(#d3dedb 0.75px, transparent 0.75px),
+    linear-gradient(180deg, #ffffff 0%, #f7faf9 50%, #f4f7f6 100%);
+  background-size: 26px 26px, 100% 100%;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 a {
@@ -42,7 +58,7 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   Header & Navigation
+   Header & Navigation (Glassmorphic)
    -------------------------------------------------------------------------- */
 header {
   height: 76px;
@@ -50,17 +66,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e8ecee;
-  background: #ffffff;
+  border-bottom: 1px solid rgba(220, 230, 228, 0.85);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 2px 10px rgba(25, 52, 71, 0.02);
 }
 
 .brand {
   font-weight: 700;
   font-size: 19px;
   color: var(--brand);
+  letter-spacing: -0.3px;
 }
 
 .brand span {
@@ -69,13 +89,14 @@ header {
 
 nav {
   display: flex;
-  gap: 25px;
+  gap: 26px;
   font-size: 13px;
-  color: #59656c;
+  color: #55636a;
 }
 
 nav a {
   transition: color 0.15s ease;
+  padding: 4px 0;
 }
 
 nav a:hover,
@@ -94,15 +115,29 @@ nav a[aria-current="page"] {
 }
 
 /* --------------------------------------------------------------------------
-   Hero Section (Homepage)
+   Hero Section (Atmospheric Ambient Glow)
    -------------------------------------------------------------------------- */
 .hero {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr;
-  gap: 50px;
-  padding-top: 85px;
-  padding-bottom: 80px;
+  gap: 55px;
+  padding-top: 90px;
+  padding-bottom: 85px;
   align-items: center;
+  position: relative;
+}
+
+/* Soft ambient lighting in hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: -60px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(181, 107, 75, 0.08) 0%, rgba(25, 52, 71, 0.04) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .hero aside {
@@ -115,7 +150,7 @@ nav a[aria-current="page"] {
 label {
   display: inline-block;
   font-size: 11px;
-  letter-spacing: 1.8px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 700;
@@ -135,39 +170,42 @@ label {
 
 .hero h3 {
   font-size: 16px;
-  line-height: 1.5;
-  color: #45545e;
+  line-height: 1.55;
+  color: var(--ink-light);
   font-weight: 500;
 }
 
 .intro,
 .section article h3 {
-  font: 500 21px/1.5 'Source Serif 4', Georgia, serif;
-  color: #45545e;
+  font: 500 21px/1.55 'Source Serif 4', Georgia, serif;
+  color: var(--ink-light);
 }
 
 .btn,
 .outline {
   display: inline-block;
-  padding: 12px 22px;
+  padding: 12px 24px;
   font-size: 13px;
   font-weight: 700;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   margin: 12px 14px 0 0;
 }
 
 .btn {
   background: var(--brand);
   color: #ffffff;
+  box-shadow: 0 4px 14px rgba(25, 52, 71, 0.15);
 }
 
 .btn:hover {
   background: var(--brand-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(25, 52, 71, 0.2);
 }
 
 .outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.6);
   color: var(--brand);
   border: 1px solid var(--brand);
 }
@@ -175,6 +213,7 @@ label {
 .outline:hover {
   background: var(--brand);
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .plain {
@@ -194,15 +233,18 @@ label {
   margin-top: 36px;
 }
 
+/* Portrait */
 .portrait {
   width: 100%;
   height: 420px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #e8edef;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .portrait img {
@@ -215,36 +257,38 @@ label {
 
 .note {
   border-bottom: 1px solid var(--line);
-  padding: 15px 0;
+  padding: 16px 0;
   color: #5e6b72;
-  font: 16px/1.5 'Source Serif 4', Georgia, serif;
+  font: 16px/1.55 'Source Serif 4', Georgia, serif;
 }
 
 /* --------------------------------------------------------------------------
-   Data Strip (Impact Numbers & Roles)
+   Data Strip (Impact Numbers & Roles Banner)
    -------------------------------------------------------------------------- */
 .strip {
-  background: #f1f4f3;
-  border-block: 1px solid #e6ecea;
+  background: linear-gradient(180deg, #f3f7f6 0%, #ebf2f0 100%);
+  border-block: 1px solid #d9e3e1;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .stripgrid {
   display: grid;
   grid-template-columns: 0.7fr 1fr 1.3fr 1fr;
   gap: 25px;
-  padding: 24px 0;
+  padding: 26px 0;
   align-items: baseline;
 }
 
 .strip p {
   font-size: 12px;
-  color: #68747a;
+  color: #637179;
   line-height: 1.5;
   margin: 0;
 }
 
 .strip b {
-  color: #293e4b;
+  color: #1e3646;
   font-size: 14px;
 }
 
@@ -252,14 +296,14 @@ label {
    General Section Layouts
    -------------------------------------------------------------------------- */
 .section {
-  padding: 85px 0;
+  padding: 90px 0;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 80px;
+  position: relative;
 }
 
-.section h2,
-.contact h2 {
+.section h2 {
   font: 500 clamp(32px, 3.8vw, 46px)/1.15 'Source Serif 4', Georgia, serif;
   letter-spacing: -1px;
   color: var(--brand);
@@ -267,19 +311,34 @@ label {
 }
 
 .section article {
-  color: #5d6870;
+  color: #515e66;
 }
 
 .section article h3 {
   margin-top: 0;
 }
 
+/* Alternating Shaded Section Texture */
 .shaded {
-  background: var(--bg-shaded);
+  background-color: #f2f6f5;
+  background-image: 
+    radial-gradient(#cfdbd8 0.75px, transparent 0.75px),
+    linear-gradient(180deg, #edf3f2 0%, #f6faf9 100%);
+  background-size: 26px 26px, 100% 100%;
+  border-block: 1px solid #e1e9e7;
 }
 
 .sectionhead {
   margin-bottom: 35px;
+}
+
+.sectionhead label {
+  background: var(--accent-soft);
+  color: #a65f42;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .sectionintro {
@@ -290,18 +349,11 @@ label {
 }
 
 /* --------------------------------------------------------------------------
-   RESEARCH SECTION & CARDS (Elevated Background & Uncropped Figures)
+   RESEARCH SECTION & CARDS
    -------------------------------------------------------------------------- */
 #research.section.shaded {
   display: block;
-  padding: 80px 0 96px;
-  background-color: #f6f8f8;
-  background-image: 
-    radial-gradient(#d3dedb 0.75px, transparent 0.75px),
-    linear-gradient(180deg, #f0f4f3 0%, #f9fbfa 100%);
-  background-size: 24px 24px, 100% 100%;
-  border-bottom: 1px solid #e1e8e6;
-  position: relative;
+  padding: 85px 0 100px;
 }
 
 #research.section > .wrap {
@@ -312,16 +364,6 @@ label {
 #research .sectionhead {
   max-width: 720px;
   margin-bottom: 38px;
-}
-
-#research .sectionhead label {
-  background: var(--accent-soft);
-  color: #a65f42;
-  padding: 4px 10px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 10px;
-  letter-spacing: 1.5px;
 }
 
 #research .research-cards {
@@ -339,10 +381,10 @@ label {
   display: flex;
   flex-direction: column;
   background: var(--card-bg);
-  border: 1px solid rgba(200, 214, 210, 0.85);
+  border: 1px solid var(--card-border);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(25, 52, 71, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s ease;
@@ -364,15 +406,15 @@ label {
 
 #research .research-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(25, 52, 71, 0.08), 0 3px 8px rgba(0, 0, 0, 0.04);
-  border-color: #cbd8d5;
+  box-shadow: var(--shadow-lg);
+  border-color: #cad8d5;
 }
 
 #research .research-card:hover::before {
   opacity: 1;
 }
 
-/* Graphical Abstract Frame: Uncropped, completely visible diagrams */
+/* Graphical Abstract Frame: Uncropped, legible scientific diagrams */
 #research .research-card > img {
   display: block;
   width: 100%;
@@ -381,7 +423,7 @@ label {
   object-position: center;
   background: #fbfcfc;
   padding: 14px 16px;
-  border-bottom: 1px solid #edf2f0;
+  border-bottom: 1px solid #ebf1ef;
   transition: background-color 0.2s ease;
 }
 
@@ -426,21 +468,28 @@ label {
 }
 
 .courses {
-  border-top: 1px solid #d9e1df;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
 }
 
 .courses p {
-  padding: 12px 0;
-  border-bottom: 1px solid #d9e1df;
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
   margin: 0;
   display: grid;
   gap: 3px;
+  transition: background-color 0.15s ease;
+}
+
+.courses p:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .courses small,
 .activity small {
   font-size: 10px;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   color: var(--accent);
   font-weight: 700;
   text-transform: uppercase;
@@ -460,8 +509,8 @@ label {
 }
 
 .publist li {
-  padding: 0 0 1rem 0.35rem;
-  line-height: 1.65;
+  padding: 0 0 1.1rem 0.35rem;
+  line-height: 1.7;
   color: var(--ink);
 }
 
@@ -479,8 +528,8 @@ label {
 
 .rule {
   border-block: 1px solid var(--line);
-  padding: 15px 0;
-  margin: 25px 0;
+  padding: 18px 0;
+  margin: 28px 0;
 }
 
 .hint {
@@ -491,7 +540,7 @@ label {
 }
 
 /* --------------------------------------------------------------------------
-   Tags & Professional Service / Activities
+   Tags & Professional Activities
    -------------------------------------------------------------------------- */
 .tags {
   display: flex;
@@ -501,25 +550,26 @@ label {
 }
 
 .tags span {
-  border: 1px solid #d5dfdd;
+  border: 1px solid var(--line);
   background: #ffffff;
   border-radius: 20px;
-  padding: 5px 12px;
-  font-size: 11px;
+  padding: 6px 13px;
+  font-size: 11.5px;
   color: #45545e;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .subhead {
-  margin-top: 2.2rem;
+  margin-top: 2.4rem;
 }
 
 .activity {
-  border-top: 1px solid #d8e0df;
+  border-top: 1px solid var(--line);
 }
 
 .activity > div {
-  padding: 18px 0;
-  border-bottom: 1px solid #d8e0df;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .activity h3 {
@@ -535,50 +585,69 @@ label {
 }
 
 /* --------------------------------------------------------------------------
-   Contact Page
+   Contact Page (Deep Navy Environmental Water Gradient)
    -------------------------------------------------------------------------- */
 .contact {
-  background: var(--brand);
+  background: linear-gradient(145deg, #102330 0%, #173347 50%, #1f425b 100%);
   color: #ffffff;
-  padding: 85px 0 95px;
+  padding: 95px 0 105px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtle warm ambient highlight in the corner */
+.contact::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(181, 107, 75, 0.15) 0%, transparent 65%);
+  pointer-events: none;
 }
 
 .contact label {
-  color: #e3a17c;
+  color: #e5a785;
 }
 
 .contact h2 {
   color: #ffffff;
-  font-size: 50px;
+  font-size: 52px;
+  letter-spacing: -1.5px;
 }
 
 .contact p {
-  font: 18px/1.6 'Source Serif 4', Georgia, serif;
-  color: #c5d0d5;
+  font: 18px/1.65 'Source Serif 4', Georgia, serif;
+  color: #c9d5da;
   max-width: 440px;
 }
 
 .contactlinks {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
 .contactlinks a {
-  padding: 14px 0;
-  border-bottom: 1px solid #526674;
-  font-size: 14px;
-  transition: color 0.15s ease;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 14.5px;
+  transition: all 0.2s ease;
 }
 
 .contactlinks a:hover {
-  color: #e3a17c;
+  color: #e5a785;
+  padding-left: 6px;
 }
 
 .contactlinks span {
   display: block;
-  padding: 14px 0;
-  border-bottom: 1px solid #526674;
-  color: #c5d0d5;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #c9d5da;
   line-height: 1.7;
   font-size: 14px;
 }
@@ -587,10 +656,11 @@ label {
    Footer
    -------------------------------------------------------------------------- */
 footer {
-  background: #102632;
-  color: #b7c2c7;
+  background: #0d1a22;
+  color: #a4b2b8;
   font-size: 11px;
-  padding: 22px 0;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 footer .wrap {
@@ -602,10 +672,15 @@ footer .wrap {
 
 footer a {
   color: #ffffff;
+  transition: color 0.15s ease;
+}
+
+footer a:hover {
+  color: #e5a785;
 }
 
 /* --------------------------------------------------------------------------
-   Responsive Layout & Media Queries
+   Responsive Media Queries
    -------------------------------------------------------------------------- */
 @media (max-width: 960px) {
   #research .research-cards {
@@ -621,10 +696,12 @@ footer a {
     top: 76px;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
     padding: 20px 25px;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--line);
   }
 
   .menu {
@@ -643,7 +720,7 @@ footer a {
   }
 
   .hero {
-    padding: 55px 0;
+    padding: 60px 0;
   }
 
   .hero aside {
@@ -661,7 +738,7 @@ footer a {
   }
 
   .section {
-    padding: 60px 0;
+    padding: 65px 0;
   }
 
   footer .wrap {
@@ -694,5 +771,9 @@ footer a {
 
   .hero h1 {
     font-size: 42px;
+  }
+
+  .contact h2 {
+    font-size: 40px;
   }
 }
