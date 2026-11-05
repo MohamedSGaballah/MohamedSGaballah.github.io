@@ -1,10 +1,18 @@
+/* ==========================================================================
+   Mohamed S. Gaballah Awad — Academic & Engineering Portfolio Stylesheet
+   ========================================================================== */
+
 :root {
   --ink: #24313a;
   --line: #dce3e5;
   --brand: #193447;
+  --brand-light: #244b66;
   --accent: #b56b4b;
+  --accent-soft: rgba(181, 107, 75, 0.1);
   --muted: #69757b;
   --bg-shaded: #f4f7f6;
+  --card-bg: #ffffff;
+  --card-border: #dce4e2;
 }
 
 * {
@@ -20,7 +28,7 @@ body {
   margin: 0;
   color: var(--ink);
   font: 15px/1.7 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #fff;
+  background: #ffffff;
 }
 
 a {
@@ -30,10 +38,12 @@ a {
 
 .wrap {
   width: min(1100px, calc(100% - 48px));
-  margin: auto;
+  margin: 0 auto;
 }
 
-/* Header & Nav */
+/* --------------------------------------------------------------------------
+   Header & Navigation
+   -------------------------------------------------------------------------- */
 header {
   height: 76px;
   padding: 0 max(24px, calc((100vw - 1100px) / 2));
@@ -41,7 +51,7 @@ header {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #e8ecee;
-  background: #fff;
+  background: #ffffff;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -83,7 +93,9 @@ nav a[aria-current="page"] {
   color: var(--brand);
 }
 
-/* Hero Section */
+/* --------------------------------------------------------------------------
+   Hero Section (Homepage)
+   -------------------------------------------------------------------------- */
 .hero {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr;
@@ -140,18 +152,18 @@ label {
   padding: 12px 22px;
   font-size: 13px;
   font-weight: 700;
-  border-radius: 3px;
+  border-radius: 4px;
   transition: all 0.2s ease;
   margin: 12px 14px 0 0;
 }
 
 .btn {
   background: var(--brand);
-  color: white;
+  color: #ffffff;
 }
 
 .btn:hover {
-  background: #244b66;
+  background: var(--brand-light);
 }
 
 .outline {
@@ -162,7 +174,7 @@ label {
 
 .outline:hover {
   background: var(--brand);
-  color: white;
+  color: #ffffff;
 }
 
 .plain {
@@ -182,7 +194,6 @@ label {
   margin-top: 36px;
 }
 
-/* Portrait */
 .portrait {
   width: 100%;
   height: 420px;
@@ -209,7 +220,9 @@ label {
   font: 16px/1.5 'Source Serif 4', Georgia, serif;
 }
 
-/* Banner Strip */
+/* --------------------------------------------------------------------------
+   Data Strip (Impact Numbers & Roles)
+   -------------------------------------------------------------------------- */
 .strip {
   background: #f1f4f3;
   border-block: 1px solid #e6ecea;
@@ -232,10 +245,12 @@ label {
 
 .strip b {
   color: #293e4b;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-/* Sections */
+/* --------------------------------------------------------------------------
+   General Section Layouts
+   -------------------------------------------------------------------------- */
 .section {
   padding: 85px 0;
   display: grid;
@@ -274,7 +289,136 @@ label {
   margin-top: 1rem;
 }
 
-/* Two Column / Courses */
+/* --------------------------------------------------------------------------
+   RESEARCH SECTION & CARDS (Elevated Background & Uncropped Figures)
+   -------------------------------------------------------------------------- */
+#research.section.shaded {
+  display: block;
+  padding: 80px 0 96px;
+  background-color: #f6f8f8;
+  background-image: 
+    radial-gradient(#d3dedb 0.75px, transparent 0.75px),
+    linear-gradient(180deg, #f0f4f3 0%, #f9fbfa 100%);
+  background-size: 24px 24px, 100% 100%;
+  border-bottom: 1px solid #e1e8e6;
+  position: relative;
+}
+
+#research.section > .wrap {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+#research .sectionhead {
+  max-width: 720px;
+  margin-bottom: 38px;
+}
+
+#research .sectionhead label {
+  background: var(--accent-soft);
+  color: #a65f42;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+  letter-spacing: 1.5px;
+}
+
+#research .research-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+#research .research-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid rgba(200, 214, 210, 0.85);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(25, 52, 71, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  position: relative;
+}
+
+#research .research-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+#research .research-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(25, 52, 71, 0.08), 0 3px 8px rgba(0, 0, 0, 0.04);
+  border-color: #cbd8d5;
+}
+
+#research .research-card:hover::before {
+  opacity: 1;
+}
+
+/* Graphical Abstract Frame: Uncropped, completely visible diagrams */
+#research .research-card > img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  object-position: center;
+  background: #fbfcfc;
+  padding: 14px 16px;
+  border-bottom: 1px solid #edf2f0;
+  transition: background-color 0.2s ease;
+}
+
+#research .research-card:hover > img {
+  background: #ffffff;
+}
+
+#research .research-card-content {
+  flex: 1;
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+#research .research-card-content small {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#research .research-card-content h3 {
+  margin: 10px 0 10px;
+  font: 600 21px/1.3 'Source Serif 4', Georgia, serif;
+  color: var(--brand);
+}
+
+#research .research-card-content p {
+  margin: 0;
+  color: #637179;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   Teaching & Courses
+   -------------------------------------------------------------------------- */
 .twocol {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -303,11 +447,13 @@ label {
 }
 
 .courses b {
-  font-size: 13px;
+  font-size: 13.5px;
   color: #2b414d;
 }
 
-/* Publications */
+/* --------------------------------------------------------------------------
+   Publications
+   -------------------------------------------------------------------------- */
 .publist {
   padding-left: 1.2rem;
   margin: 1.2rem 0 1.5rem;
@@ -332,7 +478,7 @@ label {
 }
 
 .rule {
-  border-block: 1px solid #dce3e4;
+  border-block: 1px solid var(--line);
   padding: 15px 0;
   margin: 25px 0;
 }
@@ -344,7 +490,9 @@ label {
   display: block;
 }
 
-/* Tags & Service */
+/* --------------------------------------------------------------------------
+   Tags & Professional Service / Activities
+   -------------------------------------------------------------------------- */
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -354,7 +502,7 @@ label {
 
 .tags span {
   border: 1px solid #d5dfdd;
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
   padding: 5px 12px;
   font-size: 11px;
@@ -386,68 +534,12 @@ label {
   margin: 0 0 6px;
 }
 
-/* Research Cards */
-#research.section {
-  display: block;
-  padding: 64px 0 80px;
-}
-
-#research .research-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 30px;
-}
-
-#research .research-card {
-  min-width: 0;
-  background: #fff;
-  border: 1px solid #dce4e2;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-#research .research-card > img {
-  display: block;
-  width: 100%;
-  height: 240px;            /* Gives enough vertical area */
-  object-fit: contain;      /* Shows the WHOLE graphic — NO cutting or cropping */
-  object-position: center;
-  background-color: #f7f9fa;/* Clean light backdrop for edges */
-  padding: 12px;            /* Keeps text away from card border */
-  border-bottom: 1px solid #e5ecea;
-}
-
-#research .research-card-content {
-  flex: 1;
-  padding: 20px 22px 24px;
-}
-
-#research .research-card-content small {
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-#research .research-card-content h3 {
-  margin: 10px 0 8px;
-  font: 500 22px/1.25 'Source Serif 4', Georgia, serif;
-  color: #243d4b;
-}
-
-#research .research-card-content p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.65;
-}
-
-/* Contact Page */
+/* --------------------------------------------------------------------------
+   Contact Page
+   -------------------------------------------------------------------------- */
 .contact {
   background: var(--brand);
-  color: white;
+  color: #ffffff;
   padding: 85px 0 95px;
 }
 
@@ -456,7 +548,7 @@ label {
 }
 
 .contact h2 {
-  color: white;
+  color: #ffffff;
   font-size: 50px;
 }
 
@@ -475,7 +567,7 @@ label {
   padding: 14px 0;
   border-bottom: 1px solid #526674;
   font-size: 14px;
-  transition: color 0.15s;
+  transition: color 0.15s ease;
 }
 
 .contactlinks a:hover {
@@ -491,7 +583,9 @@ label {
   font-size: 14px;
 }
 
-/* Footer */
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
 footer {
   background: #102632;
   color: #b7c2c7;
@@ -507,13 +601,16 @@ footer .wrap {
 }
 
 footer a {
-  color: white;
+  color: #ffffff;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 900px) {
+/* --------------------------------------------------------------------------
+   Responsive Layout & Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
   #research .research-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
@@ -524,10 +621,10 @@ footer a {
     top: 76px;
     left: 0;
     right: 0;
-    background: white;
+    background: #ffffff;
     padding: 20px 25px;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   .menu {
@@ -560,6 +657,7 @@ footer a {
 
   .stripgrid {
     grid-template-columns: 1fr 1fr;
+    gap: 18px;
   }
 
   .section {
@@ -572,22 +670,17 @@ footer a {
   }
 }
 
-@media (max-width: 560px) {
-  #research .research-cards { 
-    grid-template-columns: 1fr; 
+@media (max-width: 580px) {
+  .wrap {
+    width: calc(100% - 32px);
   }
-  #research .research-card > img { 
-    height: 220px;
-    object-fit: contain; 
-    padding: 10px;
-  }
-  #research.section > .wrap { 
-    width: calc(100% - 34px); 
-  }
-}
 
   .stripgrid {
     grid-template-columns: 1fr;
+  }
+
+  #research.section.shaded {
+    padding: 55px 0 70px;
   }
 
   #research .research-cards {
@@ -596,6 +689,7 @@ footer a {
 
   #research .research-card > img {
     height: 220px;
+    padding: 10px;
   }
 
   .hero h1 {
