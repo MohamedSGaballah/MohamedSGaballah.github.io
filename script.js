@@ -1,39 +1,36 @@
-// Navigation menu toggle
-const menu = document.querySelector('.menu');
-const nav = document.querySelector('nav');
-
-if (menu && nav) {
-  menu.addEventListener('click', () => nav.classList.toggle('open'));
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-}
-
-// Current Year in footer
-const yearEl = document.getElementById('year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
 // Live GoatCounter View Count in Footer
 (function loadViewCount() {
   const viewsEl = document.getElementById('stats-views');
   if (!viewsEl) return;
 
-  // Query GoatCounter API for total site visits
+  // Query GoatCounter for the total site visits
   fetch('https://mohamedsgaballah.goatcounter.com/counter//.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
+    .then(res => {
+      if (!res.ok) throw new Error('API restricted or not ready');
+      return res.json();
     })
     .then(data => {
-      // Formats number with commas (e.g. 1,420 views)
       if (data && data.count) {
-        viewsEl.textContent = Number(data.count.replace(/,/g, '')).toLocaleString();
+        // Strip commas if any, then format cleanly
+        const cleanNumber = parseInt(data.count.replace(/,/g, ''), 10);
+        viewsEl.textContent = isNaN(cleanNumber) ? data.count : cleanNumber.toLocaleString();
       } else {
-        viewsEl.textContent = data.count || '0';
+        viewsEl.textContent = '1';
       }
     })
     .catch(() => {
-      // Fallback if blocked by ad-blocker or still initializing
-      viewsEl.textContent = 'Active';
+      // If the API is still blocked or ad-blocker blocked the fetch
+      // Fallback: check GoatCounter's total endpoint
+      fetch('https://mohamedsgaballah.goatcounter.com/counter/TOTAL.json')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.count) {
+            viewsEl.textContent = data.count;
+          }
+        })
+        .catch(() => {
+          // If public API remains unchecked in settings, show 'Live'
+          viewsEl.textContent = 'Live';
+        });
     });
 })();
