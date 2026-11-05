@@ -678,7 +678,23 @@ footer a {
 footer a:hover {
   color: #e5a785;
 }
+/* Footer Visitor Stats Badge */
+.visitor-stats {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: #c9d5da;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
 
+.visitor-stats strong {
+  color: #ffffff;
+  margin-left: 4px;
+}
 /* --------------------------------------------------------------------------
    Responsive Media Queries
    -------------------------------------------------------------------------- */
