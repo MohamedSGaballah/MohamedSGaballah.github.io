@@ -3,6 +3,8 @@
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-485BVVJKN6"></script>
+  <!-- GoatCounter analytics -->
+  <script async data-goatcounter="https://mohamedsgaballah.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -102,23 +104,67 @@
         <a class="btn" href="assets/Mohamed_Awad_CV.pdf" rel="noopener noreferrer" target="_blank">Download CV (PDF) ↗</a>
       </article>
     </section>
+
+    <!-- Visual Global Visitors & Map Section -->
+    <section class="section wrap" id="visitor-map" style="text-align: center; padding: 48px 0 24px 0; border-top: 1px solid rgba(255,255,255,0.08);">
+      <label style="display: block; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7;">Analytics &amp; Reach</label>
+      <h2 style="font-size: 1.6rem; margin-bottom: 12px;">Global Visitors &amp; Impact</h2>
+      <p style="max-width: 600px; margin: 0 auto 24px auto; opacity: 0.8; font-size: 0.95rem;">
+        Total pageviews recorded: <strong id="map-total-views" style="color: #64b5f6;">...</strong>
+      </p>
+
+      <div style="display: inline-block; background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+        <a href="https://mapmyvisitors.com/web/1c936" target="_blank" rel="noopener noreferrer" title="Click to view interactive visitor details">
+          <img src="https://mapmyvisitors.com/map.png?d=1c936&cl=ffffff&w=a" alt="Live Visitor Map" style="max-width: 100%; height: auto; min-height: 180px; border-radius: 8px; display: block;" />
+        </a>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">Click map for detailed regional and country logs</p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
       <span>© <span id="year"></span> Mohamed S. Gaballah Awad</span>
       <span>School of Engineering &amp; Technology · Central Michigan University</span>
-      <span class="visitor-stats" style="display: inline-flex; align-items: center; gap: 6px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; opacity: 0.8;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-        <span>Visitors:</span>
-        <a href="https://mapmyvisitors.com/web/1c936" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; text-decoration: none;">
-          <img src="https://mapmyvisitors.com/map.png?d=1c936&cl=ffffff&w=a" alt="MapMyVisitors Counter" style="max-height: 18px; vertical-align: middle; border: none;"/>
-        </a>
+      
+      <!-- Visitor Stats Pill -->
+      <span class="visitor-stats" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; opacity: 0.85;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <span>Views: <strong id="stats-views" style="color: #64b5f6; font-weight: 600;">...</strong></span>
+        <span style="opacity: 0.4;">|</span>
+        <a href="#visitor-map" style="color: inherit; text-decoration: none; font-size: 0.82rem; opacity: 0.85;">🗺️ View Map</a>
       </span>
+
       <a href="index.html">About ↑</a>
     </div>
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Live GoatCounter Stats Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fetch live real count from your GoatCounter
+      fetch('https://mohamedsgaballah.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          var raw = data.count ? data.count.toString().replace(/,/g, '') : '0';
+          var countNum = parseInt(raw, 10) || 0;
+          var formatted = countNum.toLocaleString();
+
+          var footerEl = document.getElementById('stats-views');
+          if (footerEl) footerEl.textContent = formatted;
+
+          var mapEl = document.getElementById('map-total-views');
+          if (mapEl) mapEl.textContent = formatted;
+        })
+        .catch(function() {
+          var footerEl = document.getElementById('stats-views');
+          if (footerEl && footerEl.textContent === '...') footerEl.textContent = 'Active';
+          var mapEl = document.getElementById('map-total-views');
+          if (mapEl && mapEl.textContent === '...') mapEl.textContent = 'Active';
+        });
+    });
+  </script>
 </body>
 </html>
