@@ -3,24 +3,28 @@
 A responsive, minimal academic website for GitHub Pages.
 
 ## Files
-- `index.html` — website content and structure
+- `index.html` — About / homepage
+- `research.html` — Research
+- `publications.html` — Publications
+- `teaching.html` — Teaching
+- `industry.html` — Industry, including Leadership & Professional Service
+- `awards.html` — Awards, honors, international fellowships, and recognition
+- `contact.html` — Contact
 - `styles.css` — visual design and responsive layout
-- `script.js` — navigation and footer behavior
+- `script.js` — navigation, mobile menu, and footer behavior
 - `assets/Mohamed_Awad_CV.pdf` — downloadable 2026 CV
-- `assets/profile.jpg` — optional professional headshot (not yet supplied)
+- `assets/profile.jpg` — professional headshot
 
 ## Before publishing
-- Replace `Awad1m@cmich.edu` in `index.html` with your university email.
-- Add a professional headshot as `assets/profile.jpg` (the current block is a placeholder).
+- Ensure all HTML pages (`index.html`, `research.html`, `publications.html`, `teaching.html`, `industry.html`, `awards.html`, `contact.html`) include the updated top navigation menu.
 - Verify that the CV at `assets/Mohamed_Awad_CV.pdf` is current.
-- Review course titles, roles, awards, and all content for accuracy.
-- Add selected publication citations, DOI links, conference activities, and photos as desired.
+- Review course titles, roles, awards, and publication details for accuracy.
 
 ## Preview locally
 Open `index.html` in a web browser.
 
 ## Update the live website
-1. Replace or edit the files in the local repository folder.
+1. Replace or edit the files in your local repository folder (ensuring file names are all lowercase).
 2. Open GitHub Desktop and review the detected changes.
 3. Enter a commit summary, then click **Commit to main**.
 4. Click **Push origin**.
@@ -28,6 +32,4 @@ Open `index.html` in a web browser.
 
 ## Notes
 - The selected publications are a curated subset of the uploaded 2026 CV; consult Google Scholar for the complete/current record.
-- Public contact details (CMU email, office phone, mobile phone, and office address) are included at the user's request.
-- Add a professional headshot as `assets/profile.jpg` when ready; the homepage currently shows a placeholder.
-- Check publication details and status before future updates, particularly manuscripts listed as pending or under review in the CV.
+- Public contact details and academic appointments are aligned with your role at Central Michigan University (CMU).
