@@ -113,51 +113,24 @@
     </section>
   </main>
 
-  <footer>
-    <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-      <span>© <span id="year"></span> Mohamed S. Gaballah Awad</span>
-      <span>School of Engineering &amp; Technology · Central Michigan University</span>
+  <!-- Centered Visitors Footer (Matching Junyi Zhao's Layout) -->
+  <footer style="background: #0b111e; color: #ffffff; text-align: center; padding: 60px 20px 40px 20px;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; font-weight: 500; color: #ffffff; margin: 0 0 12px 0; letter-spacing: 0.5px;">Visitors</h2>
+      <div style="width: 50px; height: 2px; background: #d4a373; margin: 0 auto 30px auto;"></div>
       
-      <!-- Combined Live Views + Map Badge in Footer -->
-      <span class="visitor-stats" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; opacity: 0.85;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-        <span style="font-size: 0.88rem;">Views: <strong id="stats-views" style="color: #64b5f6; font-weight: 600;">86</strong></span>
-        <span style="opacity: 0.35;">|</span>
-        <a href="https://mapmyvisitors.com/web/1c9dv" target="_blank" rel="noopener noreferrer" title="View live geographic visitor map" style="display: inline-flex; align-items: center; text-decoration: none;">
-          <img src="https://mapmyvisitors.com/map.png?d=1E4QaAtFpvAjKTM-OOOn8STz35oDqbN7DaX-wEcnzBA&cl=ffffff" alt="Visitors Map" style="height: 20px; width: auto; border: none; border-radius: 3px; vertical-align: middle;" />
-        </a>
-      </span>
+      <!-- Blue Visitors Map Box -->
+      <div style="display: inline-block; margin-bottom: 50px;">
+        <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=1E4QaAtFpvAjKTM-OOOn8STz35oDqbN7DaX-wEcnzBA&cl=ffffff&w=a"></script>
+      </div>
 
-      <a href="index.html">About ↑</a>
+      <!-- Copyright -->
+      <p style="color: #6c7d93; font-size: 0.95rem; margin: 0; letter-spacing: 0.5px;">
+        &copy; <span id="year"></span> MOHAMED S. GABALLAH AWAD
+      </p>
     </div>
   </footer>
 
   <script src="script.js"></script>
-
-  <!-- Live Real Views Counter Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Fetches live public view counts from your GoatCounter account
-      var endpoint = 'https://mohamedsgaballah.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json';
-      fetch(endpoint)
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          if (data && data.count) {
-            var raw = data.count.toString().replace(/,/g, '');
-            var countNum = parseInt(raw, 10);
-            if (!isNaN(countNum)) {
-              var el = document.getElementById('stats-views');
-              if (el) el.textContent = countNum.toLocaleString();
-            }
-          }
-        })
-        .catch(function() {
-          // Fallback gracefully to last confirmed count
-          var el = document.getElementById('stats-views');
-          if (el && el.textContent === '...') el.textContent = '86';
-        });
-    });
-  </script>
 </body>
-
 </html>
