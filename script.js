@@ -1,36 +1,50 @@
-// Live GoatCounter View Count in Footer
-(function loadViewCount() {
-  const viewsEl = document.getElementById('stats-views');
-  if (!viewsEl) return;
+// script.js - Academic Website Navigation & Real-time Stats
 
-  // Query GoatCounter for the total site visits
-  fetch('https://mohamedsgaballah.goatcounter.com/counter//.json')
-    .then(res => {
-      if (!res.ok) throw new Error('API restricted or not ready');
-      return res.json();
-    })
-    .then(data => {
-      if (data && data.count) {
-        // Strip commas if any, then format cleanly
-        const cleanNumber = parseInt(data.count.replace(/,/g, ''), 10);
-        viewsEl.textContent = isNaN(cleanNumber) ? data.count : cleanNumber.toLocaleString();
-      } else {
-        viewsEl.textContent = '1';
-      }
-    })
-    .catch(() => {
-      // If the API is still blocked or ad-blocker blocked the fetch
-      // Fallback: check GoatCounter's total endpoint
-      fetch('https://mohamedsgaballah.goatcounter.com/counter/TOTAL.json')
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.count) {
-            viewsEl.textContent = data.count;
-          }
-        })
-        .catch(() => {
-          // If public API remains unchecked in settings, show 'Live'
-          viewsEl.textContent = 'Live';
-        });
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Mobile Navigation Toggle
+  const menuButton = document.querySelector('header button.menu');
+  const nav = document.querySelector('header nav');
+
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('open');
     });
-})();
+
+    // Close mobile menu when clicking any nav link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // 2. Automatic Copyright Year in Footer
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // 3. Real-Time Visitor Stats Poller (via GoatCounter API)
+  async function fetchRealtimeVisitors() {
+    try {
+      const response = await fetch('https://mohamedsgaballah.goatcounter.com/counter//TOTAL.json');
+      if (!response.ok) return;
+      const data = await response.json();
+      
+      const countElement = document.getElementById('stats-views');
+      if (countElement && data.count) {
+        // Format the count with commas if large
+        countElement.textContent = Number(data.count).toLocaleString();
+      }
+    } catch (error) {
+      console.log('Real-time stats sync skipped:', error);
+    }
+  }
+
+  // Fetch immediately and refresh every 60 seconds
+  fetchRealtimeVisitors();
+  setInterval(fetchRealtimeVisitors, 60000);
+});
