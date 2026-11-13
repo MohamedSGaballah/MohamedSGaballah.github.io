@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-  <link href="styles.css?v=8" rel="stylesheet"/>
+  <link href="styles.css?v=9" rel="stylesheet"/>
 </head>
 <body>
   <header>
@@ -82,8 +82,8 @@
     <!-- Impact Numbers Strip -->
     <section class="strip">
       <div class="wrap stripgrid" style="grid-template-columns: repeat(4, 1fr);">
-        <p><b>45+</b><br/>Peer-reviewed papers</p>
-        <p><b>2,000+</b><br/>Citations across journals</p>
+        <p><b>47+</b><br/>Peer-reviewed papers</p>
+        <p><b>2,100+</b><br/>Citations across journals</p>
         <p><b>H-Index: 24</b><br/>i10-index: 32</p>
         <p><b>16 Projects</b><br/>Senior Design Manager</p>
       </div>
@@ -139,22 +139,13 @@
     document.addEventListener("DOMContentLoaded", function() {
       const viewsEl = document.getElementById("stats-views");
       if (!viewsEl) return;
-
-      // 1. Use GA4 synced count if available
       if (window.GA_TOTAL_VIEWS) {
         viewsEl.textContent = window.GA_TOTAL_VIEWS;
       } else {
-        // 2. Fallback: Fetch live count from GoatCounter public JSON endpoint
         fetch("https://mohamedsgaballah.goatcounter.com/counter/TOTAL.json")
           .then(res => res.ok ? res.json() : Promise.reject())
-          .then(data => {
-            if (data && data.count) {
-              viewsEl.textContent = data.count;
-            }
-          })
-          .catch(() => {
-            // Keep baseline GA4 count if offline or blocked by ad-blocker
-          });
+          .then(data => { if (data && data.count) viewsEl.textContent = data.count; })
+          .catch(() => {});
       }
     });
   </script>

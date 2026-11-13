@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-485BVVJKN6"></script>
-  <!-- GoatCounter analytics -->
-  <script async data-goatcounter="https://mohamedsgaballah.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-485BVVJKN6');
   </script>
+
+  <!-- GoatCounter Analytics Tracker -->
+  <script>
+    window.goatcounter = {
+      no_onload: ('doNotTrack' in navigator && navigator.doNotTrack === '1'),
+    };
+  </script>
+  <script async data-goatcounter="https://mohamedsgaballah.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <meta content="Contact Mohamed S. Gaballah Awad – School of Engineering & Technology at Central Michigan University." name="description"/>
@@ -18,7 +25,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-  <link href="styles.css?v=5" rel="stylesheet"/>
+  <link href="styles.css?v=9" rel="stylesheet"/>
 </head>
 <body>
   <header>
@@ -30,6 +37,7 @@
       <a href="publications.html">Publications</a>
       <a href="teaching.html">Teaching</a>
       <a href="industry.html">Industry</a>
+      <a href="awards.html">Awards</a>
       <a aria-current="page" href="contact.html">Contact</a>
     </nav>
   </header>
@@ -38,7 +46,7 @@
     <section class="contact" id="contact">
       <div class="wrap twocol">
         <div>
-          <label>06 / CONTACT</label>
+          <label>07 / CONTACT</label>
           <h2>Let's connect.</h2>
           <p>Interested in research collaboration, student capstone sponsorship, or graduate study opportunities? I would be glad to hear from you.</p>
         </div>
@@ -56,16 +64,39 @@
   </main>
 
   <footer>
-    <div class="wrap">
+    <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
       <span>© <span id="year"></span> Mohamed S. Gaballah Awad</span>
       <span>School of Engineering &amp; Technology · Central Michigan University</span>
-      <span class="visitor-stats">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; opacity: 0.8;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-        Views: <strong id="stats-views">...</strong>
+      
+      <!-- Combined Live Views + Map Badge in Footer -->
+      <span class="visitor-stats" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; opacity: 0.85;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <span style="font-size: 0.88rem;">Views: <strong id="stats-views" style="color: #64b5f6; font-weight: 600;">668</strong></span>
+        <span style="opacity: 0.35;">|</span>
+        <a href="https://mapmyvisitors.com/web/1c9dv" target="_blank" rel="noopener noreferrer" title="View live geographic visitor map" style="display: inline-flex; align-items: center; text-decoration: none;">
+          <img src="https://mapmyvisitors.com/map.png?d=1E4QaAtFpvAjKTM-OOOn8STz35oDqbN7DaX-wEcnzBA&cl=ffffff" alt="Visitors Map" style="height: 20px; width: auto; border: none; border-radius: 3px; vertical-align: middle;" />
+        </a>
       </span>
+
       <a href="index.html">About ↑</a>
     </div>
   </footer>
+
+  <script src="assets/js/ga-views.js" onerror="console.log('GA4 static file not yet generated, using fallback.')"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const viewsEl = document.getElementById("stats-views");
+      if (!viewsEl) return;
+      if (window.GA_TOTAL_VIEWS) {
+        viewsEl.textContent = window.GA_TOTAL_VIEWS;
+      } else {
+        fetch("https://mohamedsgaballah.goatcounter.com/counter/TOTAL.json")
+          .then(res => res.ok ? res.json() : Promise.reject())
+          .then(data => { if (data && data.count) viewsEl.textContent = data.count; })
+          .catch(() => {});
+      }
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

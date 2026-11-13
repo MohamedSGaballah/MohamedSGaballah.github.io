@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-  <link href="styles.css?v=8" rel="stylesheet"/>
+  <link href="styles.css?v=9" rel="stylesheet"/>
 </head>
 <body>
   <header>
@@ -230,17 +230,12 @@
     document.addEventListener("DOMContentLoaded", function() {
       const viewsEl = document.getElementById("stats-views");
       if (!viewsEl) return;
-
       if (window.GA_TOTAL_VIEWS) {
         viewsEl.textContent = window.GA_TOTAL_VIEWS;
       } else {
         fetch("https://mohamedsgaballah.goatcounter.com/counter/TOTAL.json")
           .then(res => res.ok ? res.json() : Promise.reject())
-          .then(data => {
-            if (data && data.count) {
-              viewsEl.textContent = data.count;
-            }
-          })
+          .then(data => { if (data && data.count) viewsEl.textContent = data.count; })
           .catch(() => {});
       }
     });
