@@ -6,24 +6,17 @@
 :root {
   --ink: #1f2d37;
   --ink-light: #41535f;
-  --line: #d6e1ea;
-  --line-light: #e5edf4;
+  --line: #dbe4e2;
+  --line-light: #e8efed;
   --brand: #193447;
   --brand-dark: #10222f;
   --brand-light: #284c64;
-  --accent: #b56b4b;
-  --accent-hover: #9c5537;
-  --accent-soft: rgba(181, 107, 75, 0.08);
+  --accent: #800000;          /* Change this to your preferred Maroon (e.g., #800000 or #6d0000) */
+  --accent-hover: #600000;    /* Darker maroon shade for hover states */
+  --accent-soft: rgba(128, 0, 0, 0.08); /* Soft background tint */
   --muted: #64737b;
-  --bg-base: #f6f9fc;
-  --bg-shaded: #ebf1f6;
-  --card-bg: #ffffff;
-  --card-border: rgba(203, 216, 228, 0.85);
-  --shadow-sm: 0 2px 8px rgba(25, 52, 71, 0.04);
-  --shadow-md: 0 8px 24px rgba(25, 52, 71, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 16px 36px rgba(25, 52, 71, 0.09), 0 4px 10px rgba(0, 0, 0, 0.03);
+  ...
 }
-
 * {
   box-sizing: border-box;
 }
